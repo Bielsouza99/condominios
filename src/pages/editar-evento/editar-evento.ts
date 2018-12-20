@@ -32,21 +32,14 @@ export class EditarEventoPage {
       });
     });
 
+    this.calendar.requestReadWritePermission();
+
+    if (this.calendar.hasReadPermission() && this.calendar.hasReadWritePermission()) {
+      console.log('deu boa');
+    }
+
     this.setupPageTitle();
 
-  }
-
-  adicionarEvento(cal) {
-    let date = new Date();
-    let options = { calendarId: cal.id, calendarName: cal.name, url: 'https://ionicacademy.com', firsReminderMinutes: 15}
-
-    this.calendar.createEventInteractivelyWithOptions(this.evento.nome,this.evento.local,'teste',date,date,options).then(() => {
-
-    });
-  }
-
-  abriCalendario(cal) {
-    this.navCtrl.push('CalendarioPage');
   }
 
   private setupPageTitle() {
@@ -69,7 +62,9 @@ export class EditarEventoPage {
         .then(() => {
           this.toast.create({ message: 'Evento salvo com sucesso', duration: 3000 }).present();
           this.sms.send('048999305262', 'Teste app');
-          this.calendar.createEvent('churras');
+          this.calendar.createEvent(this.evento.nome, this.evento.local, 'Evento', this.evento.calendario)
+            .then(() => console.log('integrou com o calendario'))
+            .catch((e) => console.log('não integrou com o calendario'));
           this.navCtrl.pop();
         })
         .catch((e) => {

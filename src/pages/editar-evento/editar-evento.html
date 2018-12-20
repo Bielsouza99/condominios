@@ -18,14 +18,39 @@
       </div>
     </ion-item>
 
-    <ion-item>
+    <ion-list radio-group formControlName="local"> 
+      <ion-list-header>
+        Local do Evento
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Salão de festas 1</ion-label>
+        <ion-radio value="salao1"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Churrasqueira</ion-label>
+        <ion-radio value="churrasqueira"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>oi</ion-label>
+        <ion-radio value="oi"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>teste</ion-label>
+        <ion-radio value="teste"></ion-radio>
+      </ion-item>
+    </ion-list>
+    <!-- <ion-item>
       <ion-label stacked>Local do evento</ion-label>
       <ion-input type="text" formControlName="local"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item *ngIf="!form.controls.local.valid && (form.controls.local.dirty || form.controls.local.touched)" color="danger">
       <div [hidden]="!form.controls.local.errors.required">
-        O campo é obrigatório
+        Por favor, escolha 1 local.
       </div>
     </ion-item>
 
@@ -42,7 +67,7 @@
 
     <ion-item>
       <ion-label stacked>Data do evento</ion-label>
-      <ion-input type="text" formControlName="calendario"></ion-input>
+      <ion-datetime formControlName="calendario" displayFormat="DD/MM/YYYY"></ion-datetime>
     </ion-item>
 
     <ion-item *ngIf="!form.controls.calendario.valid && (form.controls.calendario.dirty || form.controls.calendario.touched)" color="danger">
