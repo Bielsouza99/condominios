@@ -29,12 +29,12 @@ export class EventoProvider {
     return new Promise((resolve, reject) => {
       if(evento.key) {
         this.db.list(this.PATH)
-        .update(evento.key, { nome: evento.nome, local: evento.local, terreno: evento.terreno, calendario: evento.calendario})
+        .update(evento.key, { nome: evento.nome, local: evento.local, terreno: evento.terreno, dataInicio: evento.dataInicio, dataFinal: evento.dataFinal})
         .then(() => resolve())
         .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
-        .push({ nome: evento.nome, local: evento.local, terreno: evento.terreno, calendario: evento.calendario})
+        .push({ nome: evento.nome, local: evento.local, terreno: evento.terreno, dataInicio: evento.dataInicio, dataFinal: evento.dataFinal})
         .then(() => resolve());
       }
     })

@@ -66,12 +66,23 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Data do evento</ion-label>
-      <ion-datetime formControlName="calendario" displayFormat="DD/MM/YYYY"></ion-datetime>
+      <ion-label stacked>Data de inicio do evento</ion-label>
+      <ion-datetime formControlName="dataInicio" displayFormat="DD/MM/YYYY HH:mm"></ion-datetime>
     </ion-item>
 
-    <ion-item *ngIf="!form.controls.calendario.valid && (form.controls.calendario.dirty || form.controls.calendario.touched)" color="danger">
-      <div [hidden]="!form.controls.calendario.errors.required">
+    <ion-item *ngIf="!form.controls.dataInicio.valid && (form.controls.dataInicio.dirty || form.controls.dataInicio.touched)" color="danger">
+      <div [hidden]="!form.controls.dataInicio.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data de final do evento</ion-label>
+      <ion-datetime formControlName="dataFinal" displayFormat="DD/MM/YYYY HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item *ngIf="!form.controls.dataFinal.valid && (form.controls.dataFinal.dirty || form.controls.dataFinal.touched)" color="danger">
+      <div [hidden]="!form.controls.dataFinal.errors.required">
         O campo é obrigatório
       </div>
     </ion-item>

@@ -52,7 +52,8 @@ export class EditarEventoPage {
       nome: [this.evento.nome, Validators.required],
       local: [this.evento.local, Validators.required],
       terreno: [this.evento.terreno, Validators.required],
-      calendario: [this.evento.calendario, Validators.required]
+      dataInicio: [this.evento.dataInicio, Validators.required],
+      dataFinal: [this.evento.dataFinal, Validators.required]
     })
   }
 
@@ -62,7 +63,7 @@ export class EditarEventoPage {
         .then(() => {
           this.toast.create({ message: 'Evento salvo com sucesso', duration: 3000 }).present();
           this.sms.send('048999305262', 'Teste app');
-          this.calendar.createEvent(this.evento.nome, this.evento.local, 'Evento', this.evento.calendario)
+          this.calendar.createEvent(this.evento.nome, this.evento.local, 'Evento', new Date(this.evento.dataInicio), new Date(this.evento.dataFinal))
             .then(() => console.log('integrou com o calendario'))
             .catch((e) => console.log('não integrou com o calendario'));
           this.navCtrl.pop();
