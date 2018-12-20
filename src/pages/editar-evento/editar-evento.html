@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label stacked>Nome do evento</ion-label>
+      <ion-input type="text" formControlName="nome"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!form.controls.nome.valid && (form.controls.nome.dirty || form.controls.nome.touched)" color="danger">
+      <div [hidden]="!form.controls.nome.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Local do evento</ion-label>
+      <ion-input type="text" formControlName="local"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!form.controls.local.valid && (form.controls.local.dirty || form.controls.local.touched)" color="danger">
+      <div [hidden]="!form.controls.local.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Terreno</ion-label>
+      <ion-input type="text" formControlName="terreno"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!form.controls.terreno.valid && (form.controls.terreno.dirty || form.controls.terreno.touched)" color="danger">
+      <div [hidden]="!form.controls.terreno.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Data do evento</ion-label>
+      <ion-input type="text" formControlName="calendario"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="!form.controls.calendario.valid && (form.controls.calendario.dirty || form.controls.calendario.touched)" color="danger">
+      <div [hidden]="!form.controls.calendario.errors.required">
+        O campo é obrigatório
+      </div>
+    </ion-item>
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!form.valid" (click)="enviar()">Salvar evento</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" formControlName="senha"></ion-input>
+    </ion-item>
+
+  
+    <div padding-horizontal>
+      <div class="form-error">{{loginError}}</div>
+      <button ion-button full type="submit" [disabled]="!loginForm.valid">Entrar</button>
+      <div class="login-footer">
+        <p>
+          <a href="#">Esqueceu sua senha?</a>
+          É novo por aqui? Faça seu cadastro
+        </p>
+      </div>
+      <ion-list>
+        <button ion-button icon-left block clear (click)="loginGoogle()">
+          <ion-icon name="logo-google"></ion-icon>
+          Login com o Google
+        </button>
+        <button ion-button icon-left block clear (click)="cadastro()">
+          <ion-icon name="person-add"></ion-icon>
+          Cadastre-se
+        </button>
+      </ion-list>
+    </div>
+  </form>
+</ion-content>
